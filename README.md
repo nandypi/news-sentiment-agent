@@ -7,6 +7,8 @@ summarization and sentiment analysis using Google Gemini.
 ![LangGraph](https://img.shields.io/badge/LangGraph-Agent%20Workflow-orange)
 ![Tests](https://img.shields.io/badge/Tests-Pytest-green)
 
+![Demo Video](https://youtu.be/XkXngpB94Jo)
+
 ## Overview
 
 News Intelligence Agent analyzes news articles provided either
