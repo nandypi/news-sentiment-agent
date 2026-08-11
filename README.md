@@ -9,7 +9,7 @@ summarization and sentiment analysis using Google Gemini.
 
 ## 🎥 Demo
 
-[![Watch the demo](https://img.youtube.com/vi/XkXngpB94Jo/maxresdefault.jpg)](https://youtu.be/XkXngpB94Jo)
+![ Watch the demo](https://youtu.be/XkXngpB94Jo)
 
 ## Overview
 
