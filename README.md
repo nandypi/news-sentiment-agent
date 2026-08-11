@@ -1,15 +1,22 @@
-# 📰 LangGraph News Intelligence Agent
+# 📰 News Intelligence Agent
 
-A LangGraph-based AI agent for news summarization and
-sentiment analysis.
+A LangGraph-based AI workflow for automated news
+summarization and sentiment analysis using Google Gemini.
+
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agent%20Workflow-orange)
+![Tests](https://img.shields.io/badge/Tests-Pytest-green)
 
 ## Overview
 
-Given a news article URL or raw article text, the agent:
+News Intelligence Agent analyzes news articles provided either
+as a URL or raw text.
 
-1. Fetches and extracts the article content.
-2. Generates a concise summary using Google's Gemini LLM.
-3. Performs sentiment analysis using a dedicated sentiment tool.
+The workflow:
+
+1. Fetches and extracts article content using a tool.
+2. Generates a concise summary using Google Gemini.
+3. Performs sentiment analysis using a dedicated VADER tool.
 4. Returns a structured analysis containing the summary,
    sentiment, and sentiment score.
 
@@ -28,6 +35,22 @@ Summarize with Gemini
 Analyze Sentiment
 ↓
 END
+
+## Key Engineering Concepts
+
+- **LangGraph orchestration** — models the analysis pipeline
+  as a stateful graph of independent nodes.
+- **Shared state** — passes article content, summary, and
+  sentiment information between graph nodes.
+- **Tool integration** — news extraction and sentiment
+  analysis are implemented as reusable tools.
+- **LLM integration** — Google Gemini is used for factual
+  news summarization.
+- **Structured output** — Pydantic models define the expected
+  analysis response.
+- **Separation of concerns** — fetching, summarization, and
+  sentiment analysis are isolated into separate modules.
+- **Testing** — core functionality is covered using pytest.
 
 ## Tech Stack
 
@@ -57,10 +80,17 @@ END
 
 ```text
 news-sentiment-agent/
-├── src/
+├── news_agent/
+│   ├── nodes/
+│   ├── tools/
+│   ├── graph.py
+│   ├── state.py
+│   └── models.py
 ├── tests/
 ├── examples/
 ├── main.py
+├── visualize_graph.py
+├── langgraph.png
 ├── requirements.txt
 └── README.md
 ```
@@ -70,13 +100,17 @@ news-sentiment-agent/
 ### Input
 
 ```text
-https://example.com/news-article
+A major technology company announced a new investment
+in India, creating thousands of new jobs and expanding
+its cloud infrastructure.
 ```
 
 ### Output
 
 {
-  "summary": "The CM of Andhra Pradesh is...",
+  "summary": "The technology company announced a major
+  investment in India that will expand its cloud
+  infrastructure and create thousands of jobs.",
   "sentiment": "positive",
   "sentiment_score": 0.72
 }
